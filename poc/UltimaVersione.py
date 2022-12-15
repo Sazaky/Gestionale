@@ -4,7 +4,7 @@ import csv
 
 window = tk.Tk()
 window.geometry("600x700")
-window.title("Database Prescrittori")
+window.title("Database Prescrittore")
 window.grid_columnconfigure(0, weight=1)
 
 def download_risultati():
