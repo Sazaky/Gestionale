@@ -8,8 +8,10 @@
  * @format
  */
 
+
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Button, Text, View} from 'react-native';
+
 
 const App = () => {
   return (
@@ -17,11 +19,24 @@ const App = () => {
       <ScrollView>
         <View>
           <Text style={styles.highlight}>Ciao Giovanni!</Text>
+
+		<Button
+		  onPress={styles.highlight}
+		  title="Cerca"
+		  color="#228B22"/>
+			<Button
+			  onPress={styles.highlight}
+			  title="Reset"
+			  color="#006400"/>
+
         </View>
       </ScrollView>
     </SafeAreaView>
-  );
-};
+
+	
+	
+	
+);};
 
 const styles = StyleSheet.create({
   highlight: {
@@ -31,4 +46,13 @@ const styles = StyleSheet.create({
   },
 });
 
+
+
+
 export default App;
+
+
+
+
+
+
