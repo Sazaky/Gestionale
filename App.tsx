@@ -8,10 +8,25 @@
  * @format
  */
 
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import { createDb, createTables } from './src/models/db';
+import { getDoctors } from './src/models/doctor';
 
 const App = () => {
+
+  const loadDataCallback = useCallback(async () => {
+    const db =  await createDb();
+    await createTables(db);
+    const doctors = await getDoctors(db);
+    console.log(doctors);
+  }, [])
+
+  useEffect(() => {
+    loadDataCallback();
+  }, [loadDataCallback]);
+
+
   return (
     <SafeAreaView>
       <ScrollView>
