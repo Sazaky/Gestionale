@@ -8,19 +8,28 @@
  * @format
  */
 
-import React, { useCallback, useEffect } from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import {FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import { DoctorItem } from './src/components/doctor';
+import { DoctorsHeader } from './src/components/doctorsHeader';
 import { createDb, createTables } from './src/models/db';
-import { getDoctors } from './src/models/doctor';
+import { Doctor } from './src/models/doctor';
+import { getDoctors } from './src/services/doctor';
 
 const App = () => {
+
+  const startDoctors : Doctor[] = [];
+  const [doctors, setDoctors] = useState(startDoctors);
+
 
   const loadDataCallback = useCallback(async () => {
     const db =  await createDb();
     await createTables(db);
-    const doctors = await getDoctors(db);
+    const myDoctors = await getDoctors(db);
+    setDoctors(myDoctors);
     console.log(doctors);
-  }, [])
+  }, []);
+
 
   useEffect(() => {
     loadDataCallback();
@@ -29,11 +38,7 @@ const App = () => {
 
   return (
     <SafeAreaView>
-      <ScrollView>
-        <View>
-          <Text style={styles.highlight}>Ciao Dario!</Text>
-        </View>
-      </ScrollView>
+    <FlatList data={doctors} renderItem={({item}) => <DoctorItem doctor={item}/>} ListHeaderComponent={() => <DoctorsHeader/>}/>
     </SafeAreaView>
   );
 };
