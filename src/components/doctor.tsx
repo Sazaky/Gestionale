@@ -1,12 +1,23 @@
-import {Text, View} from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import { Doctor } from "../models/doctor";
 import { styles } from '../styles/styles';
 
-export const DoctorItem = (props: {doctor: Doctor}) => {
+export const DoctorItem = (props: { doctor: Doctor }) => {
+
+    const navigation = useNavigation();
+
     return (
-        <View style={styles.doctorItem}>
-            <Text style={styles.doctorLastName}>{props.doctor.last_name}</Text>
-            <Text>{props.doctor.name}</Text>
-        </View>
+        <TouchableOpacity style={styles.doctorItem} onPress={() => navigation.navigate('Medico', {doctorId: props.doctor.id})}>
+            <View >
+                <Text style={styles.doctorLastName}>{props.doctor.name} {props.doctor.last_name}</Text>
+                <Text style={styles.doctorSpecialization}>{props.doctor.specialization}</Text>
+            </View>
+            <View >
+                <Text style={styles.doctorPhone}>{props.doctor.phone}</Text>
+                <Text style={styles.doctorPhone}>{props.doctor.mobile}</Text>
+            </View>
+        </TouchableOpacity>
     );
 }

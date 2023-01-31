@@ -9,37 +9,42 @@
  */
 
 import React, { useCallback, useEffect, useState } from 'react';
-import {FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
-import { DoctorItem } from './src/components/doctor';
-import { DoctorsHeader } from './src/components/doctorsHeader';
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { createDb, createTables } from './src/models/db';
+import { Doctors } from './src/screens/doctors';
+import { DoctorScreen } from './src/screens/doctor';
 import { Doctor } from './src/models/doctor';
-import { getDoctors } from './src/services/doctor';
+import { StackParamList } from './src/routes/types';
+
+
+const Stack = createNativeStackNavigator<StackParamList>();
+
 
 const App = () => {
 
-  const startDoctors : Doctor[] = [];
-  const [doctors, setDoctors] = useState(startDoctors);
 
-
-  const loadDataCallback = useCallback(async () => {
-    const db =  await createDb();
+  const createDbCb = useCallback(async () => {
+    const db = await createDb();
     await createTables(db);
-    const myDoctors = await getDoctors(db);
-    setDoctors(myDoctors);
-    console.log(doctors);
   }, []);
 
 
   useEffect(() => {
-    loadDataCallback();
-  }, [loadDataCallback]);
+    createDbCb();
+  }, [createDbCb]);
 
 
   return (
-    <SafeAreaView>
-    <FlatList data={doctors} renderItem={({item}) => <DoctorItem doctor={item}/>} ListHeaderComponent={() => <DoctorsHeader/>}/>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Medici" component={Doctors} />
+        <Stack.Screen name="Medico" component={DoctorScreen} initialParams={{ doctorId: undefined }} />
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
