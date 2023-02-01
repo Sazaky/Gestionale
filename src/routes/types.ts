@@ -3,7 +3,6 @@ import type {
     CompositeScreenProps,
     NavigatorScreenParams,
   } from '@react-navigation/native';
-  import type { StackScreenProps } from '@react-navigation/stack';
 
 export type StackParamList = {
     Medici: undefined;
@@ -11,4 +10,4 @@ export type StackParamList = {
 };
 
 export type DoctorProps = NativeStackScreenProps<StackParamList, 'Medico'>;
-
+export type DoctorPropsNavigation = DoctorProps['navigation'];

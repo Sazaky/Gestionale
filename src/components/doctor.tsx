@@ -3,10 +3,11 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Doctor } from "../models/doctor";
 import { styles } from '../styles/styles';
+import { DoctorPropsNavigation } from '../routes/types';
 
 export const DoctorItem = (props: { doctor: Doctor }) => {
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<DoctorPropsNavigation>();
 
     return (
         <TouchableOpacity style={styles.doctorItem} onPress={() => navigation.navigate('Medico', {doctorId: props.doctor.id})}>
