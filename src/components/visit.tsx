@@ -4,10 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from '../styles/styles';
 import { Visit } from '../models/visit';
 import { useEffect, useState } from 'react';
+import { VisitPropsNavigation } from '../routes/types';
 
 export const VisitItem = (props: { visit: Visit }) => {
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<VisitPropsNavigation>();
+    const navigateToVisita = ()=>navigation.navigate('Visita', {visitId: props.visit.id})
     const [date, setDate] = useState(0);
 
     useEffect(() => {
@@ -18,19 +20,19 @@ export const VisitItem = (props: { visit: Visit }) => {
         switch (outcome) {
             case 1:
                 return (
-                    <TouchableOpacity style={styles.visitOutcomeButtonOK }>
+                    <TouchableOpacity style={styles.visitOutcomeButtonOK} onPress={navigateToVisita}>
                         <Text style={styles.visitOutcomeText}>MATERIALE</Text>
                     </TouchableOpacity>
                 );
             case 0:
                 return (
-                    <TouchableOpacity style={styles.visitOutcomeButtonNeutral}>
+                    <TouchableOpacity style={styles.visitOutcomeButtonNeutral} onPress={navigateToVisita}>
                         <Text style={styles.visitOutcomeText}>RITORNARE</Text>
                     </TouchableOpacity>
                 );
             case -1:
                 return (
-                    <TouchableOpacity style={styles.visitOutcomeButtonKO}>
+                    <TouchableOpacity style={styles.visitOutcomeButtonKO} onPress={navigateToVisita}>
                         <Text style={styles.visitOutcomeText}>NEGATIVO</Text>
                     </TouchableOpacity>
                 );

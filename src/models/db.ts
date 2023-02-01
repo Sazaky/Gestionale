@@ -54,6 +54,38 @@ VALUES
 ( 1, 0, '2023-01-04 12:00:00', 1)
 ;`;
 
+let dropProductTable = 'DROP TABLE IF EXISTS product;';
+
+let createProductTable = `CREATE TABLE IF NOT EXISTS product (
+    id integer PRIMARY KEY,
+    name varchar(50) NOT NULL,
+    description text NOT NULL
+);`;
+
+let seedProductTable = `INSERT INTO product (name, description )
+VALUES
+( 'Aspirina', 'Antinfiammatorio'),
+( 'Polase', 'Integratore Multivitaminico'),
+( 'Brufen', 'Antinfiammatorio non steroideo'),
+( 'Lansoprazolo', 'Inibitore della pompa protonica' )
+;`;
+
+let dropOutcomeTable = 'DROP TABLE IF EXISTS outcome;';
+
+let createOutcomeTable = `CREATE TABLE IF NOT EXISTS outcome (
+    id integer PRIMARY KEY,
+    visit_id integer,
+    product_id integer,
+    product_info_type integer,
+    note text
+);`;
+
+let seedOutcomeTable = `INSERT INTO outcome (visit_id, product_id, product_info_type, note )
+VALUES
+( 1, 0, 0, ''),
+( 1, 1, 1, '')
+;`;
+
 export const createDb = async () => {
     return openDatabase({ name: 'medicalsales.db', location: 'default' }, () => {}, err => console.log(err));
 }
@@ -69,6 +101,12 @@ export const createTables = async (db: SQLiteDatabase) => {
         await db.executeSql(dropVisitTable);
         await db.executeSql(createVisitTable);
         await db.executeSql(seedVisitTable);
+        await db.executeSql(dropProductTable);
+        await db.executeSql(createProductTable);
+        await db.executeSql(seedProductTable);
+        await db.executeSql(dropOutcomeTable);
+        await db.executeSql(createOutcomeTable);
+        await db.executeSql(seedOutcomeTable);
     } catch (error) {
         console.error(error);
         throw Error('Failed to create tables.');

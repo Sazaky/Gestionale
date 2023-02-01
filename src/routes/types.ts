@@ -1,13 +1,11 @@
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type {
-    CompositeScreenProps,
-    NavigatorScreenParams,
-  } from '@react-navigation/native';
-
 export type StackParamList = {
     Medici: undefined;
     Medico: { doctorId: number },
+    Visita: { visitId: number }
 };
 
 export type DoctorProps = NativeStackScreenProps<StackParamList, 'Medico'>;
 export type DoctorPropsNavigation = DoctorProps['navigation'];
+export type VisitProps = NativeStackScreenProps<StackParamList, 'Visita'>;
+export type VisitPropsNavigation = VisitProps['navigation'];

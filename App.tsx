@@ -17,6 +17,7 @@ import { createDb, createTables } from './src/models/db';
 import { Doctors } from './src/screens/doctors';
 import { DoctorScreen } from './src/screens/doctor';
 import { StackParamList } from './src/routes/types';
+import { VisitScreen } from './src/screens/visit';
 
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -39,6 +40,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="Medici" component={Doctors} />
         <Stack.Screen name="Medico" component={DoctorScreen} initialParams={{ doctorId: undefined }} />
+        <Stack.Screen name="Visita" component={VisitScreen} initialParams={{ visitId: undefined }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
