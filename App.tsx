@@ -16,7 +16,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDb, createTables } from './src/models/db';
 import { Doctors } from './src/screens/doctors';
 import { DoctorScreen } from './src/screens/doctor';
-import { Doctor } from './src/models/doctor';
 import { StackParamList } from './src/routes/types';
 
 
@@ -25,12 +24,10 @@ const Stack = createNativeStackNavigator<StackParamList>();
 
 const App = () => {
 
-
   const createDbCb = useCallback(async () => {
     const db = await createDb();
     await createTables(db);
   }, []);
-
 
   useEffect(() => {
     createDbCb();
@@ -42,7 +39,6 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="Medici" component={Doctors} />
         <Stack.Screen name="Medico" component={DoctorScreen} initialParams={{ doctorId: undefined }} />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
