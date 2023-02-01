@@ -82,8 +82,10 @@ let createOutcomeTable = `CREATE TABLE IF NOT EXISTS outcome (
 
 let seedOutcomeTable = `INSERT INTO outcome (visit_id, product_id, product_info_type, note )
 VALUES
-( 1, 0, 0, ''),
-( 1, 1, 1, '')
+( 2, 1, 0, ''),
+( 2, 3, 1, ''),
+( 4, 2, 0, ''),
+( 4, 4, 0, '')
 ;`;
 
 export const createDb = async () => {

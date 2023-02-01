@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { Colors } from './colors';
 
 export const styles = StyleSheet.create({
-    doctorHeader: {
+    listHeader: {
         flex: 1,
         justifyContent: 'center',
         borderRadius: 10,
@@ -11,6 +11,11 @@ export const styles = StyleSheet.create({
         margin: 5,
         marginBottom: 10,
         position: 'relative',
+    },
+
+    listHeaderText: {
+        fontWeight: 'bold',
+        color: Colors.white
     },
 
     doctorItem: {
@@ -50,11 +55,6 @@ export const styles = StyleSheet.create({
     doctorPhone: {
         color: Colors.black,
         margin: 3
-    },
-
-    doctorsHeaderText: {
-        fontWeight: 'bold',
-        color: Colors.white
     },
 
     visitItem:
@@ -111,6 +111,35 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.purple,
         width: '25%',
         alignItems: 'center'
-    }
+    },
+
+    outcomeItem: {
+        flex: 1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        borderRadius: 10,
+        padding: 10,
+        backgroundColor: Colors.green_bright,
+        margin: 5,
+        position: 'relative',
+    },
+
+    productInfoTypeBrochure: {
+        margin: 5,
+        borderRadius: 20,
+        padding: 5,
+        backgroundColor: Colors.red,
+        width: '25%',
+        alignItems: 'center'
+    },
+
+    productInfoTypeSample: {
+        margin: 5,
+        borderRadius: 20,
+        padding: 5,
+        backgroundColor: Colors.purple,
+        width: '25%',
+        alignItems: 'center'
+    },
 });
 

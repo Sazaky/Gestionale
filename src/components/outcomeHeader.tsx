@@ -3,8 +3,8 @@ import { styles } from '../styles/styles';
 
 export const OutcomeHeader= () => {
     return (
-        <View>
-            <Text style={{fontWeight: 'bold'}}>ESITO VISITA</Text>
+        <View style={styles.listHeader}>
+            <Text style={styles.listHeaderText}>ESITO VISITA</Text>
         </View>
     );
 }
