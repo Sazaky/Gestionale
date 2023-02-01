@@ -1,12 +1,21 @@
 import { enablePromise, SQLiteDatabase } from 'react-native-sqlite-storage';
 import { Outcome } from '../models/outcome';
-import { Visit } from '../models/visit';
 enablePromise(true);
+
+
 
 export const getOutcomesByVisitId = async (db: SQLiteDatabase, id: number): Promise<Outcome[]> => {
     try {
         const resultArray: Outcome[] = []
-        const results = await db.executeSql(`SELECT * FROM outcome WHERE visit_id=${id};`);
+
+        let outcomes = `SELECT O.*, P.name AS product_name, P.description AS product_description
+            FROM outcome O JOIN product P ON O.product_id == P.id
+            AND visit_id=${id};
+        );`;
+
+        console.log(outcomes)
+
+        const results = await db.executeSql(outcomes);
 
         results.forEach(result => {
             for (let index = 0; index < result.rows.length; index++) {
