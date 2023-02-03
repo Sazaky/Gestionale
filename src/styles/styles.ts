@@ -29,10 +29,10 @@ export const styles = StyleSheet.create({
         position: 'relative',
     },
 
-    doctorScreen : {
+    doctorScreen: {
         //flexDirection: 'row', 
-        justifyContent: 'space-between', 
-        backgroundColor: Colors.green_bright, 
+        justifyContent: 'space-between',
+        backgroundColor: Colors.green_bright,
         margin: 5,
         marginTop: 25,
         marginBottom: 15,
@@ -60,8 +60,8 @@ export const styles = StyleSheet.create({
     visitItem:
     {
         flex: 1,
-        justifyContent: 'space-between',
-        flexDirection: 'row',
+        //justifyContent: 'space-between',
+        //flexDirection: 'row',
         borderRadius: 10,
         padding: 10,
         backgroundColor: Colors.green_bright,
@@ -70,20 +70,22 @@ export const styles = StyleSheet.create({
 
     },
 
-    visitDateLabel:{
+    visitDateLabel: {
         color: Colors.black,
         fontWeight: 'bold',
         margin: 5
     },
 
-    visitDate:{
+    visitDate: {
         color: Colors.black,
-        margin: 5
+        textAlignmentsVertical: 'top',
+        fontSize: 10
+
     },
 
-    visitOutcomeText:{
+    visitOutcomeText: {
         color: Colors.white
-        
+
     },
 
     visitOutcomeButtonOK: {
@@ -108,7 +110,7 @@ export const styles = StyleSheet.create({
         margin: 5,
         borderRadius: 20,
         padding: 5,
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.brown,
         width: '25%',
         alignItems: 'center'
     },
@@ -122,6 +124,16 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.green_bright,
         margin: 5,
         position: 'relative',
+    },
+
+    outcomeMiniItem: {
+        flexDirection: 'row',
+        margin: 5,
+        marginTop: 10, 
+        padding: 5, 
+        borderColor: Colors.black, 
+        borderRadius: 20,
+        //borderWidth: 1
     },
 
     productInfoTypeBrochure: {

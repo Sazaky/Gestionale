@@ -67,7 +67,9 @@ VALUES
 ( 'Aspirina', 'Antinfiammatorio'),
 ( 'Polase', 'Integratore Multivitaminico'),
 ( 'Brufen', 'Antinfiammatorio non steroideo'),
-( 'Lansoprazolo', 'Inibitore della pompa protonica' )
+( 'Lansoprazolo', 'Inibitore della pompa protonica' ),
+( 'Aulin 1000', 'Antinfiammatorio non steroideo'),
+( 'Moment Fiale', 'Antinfiammatorio non steroideo' )
 ;`;
 
 let dropOutcomeTable = 'DROP TABLE IF EXISTS outcome;';
@@ -84,6 +86,9 @@ let seedOutcomeTable = `INSERT INTO outcome (visit_id, product_id, product_info_
 VALUES
 ( 2, 1, 0, ''),
 ( 2, 3, 1, ''),
+( 2, 4, 1, ''),
+( 2, 5, 0, ''),
+( 2, 6, 1, ''),
 ( 4, 2, 0, ''),
 ( 4, 4, 0, '')
 ;`;
