@@ -1,6 +1,7 @@
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 export type StackParamList = {
-    Medici: undefined;
+    Home: undefined,
+    Medici: undefined,
     Medico: { doctorId: number },
     Visita: { visitId: number }
 };
