@@ -38,6 +38,7 @@ export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
             <View style={styles.doctorScreen}>
                 <Text style={{ fontWeight: 'bold', marginTop: 5 }}>{doctor.name} {doctor.last_name}</Text>
                 <Text style={{ fontStyle: 'italic', marginTop: 5 }}>{doctor.address}</Text>
+                <Text style={{marginTop: 5}}>{doctor.email}</Text>
                 <Text style={{marginTop: 5}}>{doctor.phone}</Text>
                 <Text style={{marginTop: 5}}>{doctor.mobile}</Text>
                 <View style={{borderRadius: 20, backgroundColor: Colors.green, width: '25%', marginTop: 5, padding: 5, alignItems: 'center'}}>

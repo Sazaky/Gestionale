@@ -19,6 +19,7 @@ import { DoctorScreen } from './src/screens/doctor';
 import { StackParamList } from './src/routes/types';
 import { VisitScreen } from './src/screens/visit';
 import { Home } from './src/screens/home';
+import { AddDoctorModal, addDoctorModal } from './src/screens/AddDoctorModal';
 
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -39,10 +40,15 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
+        <Stack.Group>
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Medici" component={Doctors} />
         <Stack.Screen name="Medico" component={DoctorScreen} initialParams={{ doctorId: undefined }} />
         <Stack.Screen name="Visita" component={VisitScreen} initialParams={{ visitId: undefined }} />
+        </Stack.Group>
+        <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen name="AggiungiMedico" component={AddDoctorModal} />
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );

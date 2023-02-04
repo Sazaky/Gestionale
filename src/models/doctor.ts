@@ -5,6 +5,7 @@ export interface Doctor {
   specialization: string,
   address: string,
   postal_code: string,
+  email: string,
   phone: string,
   mobile: string,
   latitude: number,

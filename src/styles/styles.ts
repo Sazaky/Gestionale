@@ -13,10 +13,39 @@ export const styles = StyleSheet.create({
         position: 'relative',
     },
 
+    textInput: {
+        borderColor: Colors.green,
+        backgroundColor: Colors.white,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+        color: Colors.black
+    },
+
+    textInputLabel : { 
+        margin: 10, 
+        marginBottom: 0, 
+        fontWeight: 'bold', 
+        color: Colors.green
+    },
+
+    formButton: {
+        alignItems: 'center',
+        borderRadius: 10,
+        padding: 20,
+        backgroundColor: Colors.green,
+        marginTop: 30,
+        position: 'relative',
+    },
+
     listHeaderText: {
         fontWeight: 'bold',
         color: Colors.white
     },
+
+    formButtonLabel: {
+        fontWeight: 'bold',
+        color: Colors.white    },
 
     doctorItem: {
         flex: 1,
