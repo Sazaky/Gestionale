@@ -1,4 +1,4 @@
-import { FlatList, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { styles } from '../styles/styles';
@@ -8,7 +8,6 @@ import { VisitPropsNavigation } from '../routes/types';
 import { createDb } from '../models/db';
 import { getOutcomesByVisitId } from '../services/outcomes';
 import { Outcome } from '../models/outcome';
-import { Colors } from '../styles/colors';
 import { OutcomeMiniItem } from './outcome';
 
 

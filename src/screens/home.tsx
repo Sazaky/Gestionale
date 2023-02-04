@@ -13,7 +13,7 @@ export const Home = () => {
     return (
         <View style={{ backgroundColor: Colors.white }}>
             <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={{ width: '33.33%', alignItems: 'center' }} onPress={() => navDoctor.navigate('Medico', {doctorId: 1})}>
+                <TouchableOpacity style={{ width: '33.33%', alignItems: 'center' }} onPress={() => navDoctor.navigate('Medici')}>
                     <SvgUri width="50%" height="50%" uri='https://www.svgrepo.com/download/325813/doctor-female.svg' />
                     <Text>MEDICI</Text>
                 </TouchableOpacity>

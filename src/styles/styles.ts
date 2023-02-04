@@ -13,6 +13,22 @@ export const styles = StyleSheet.create({
         position: 'relative',
     },
 
+    textInput: {
+        borderColor: Colors.green,
+        backgroundColor: Colors.white,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+        color: Colors.black
+    },
+
+    textInputLabel : { 
+        margin: 10, 
+        marginBottom: 0, 
+        fontWeight: 'bold', 
+        color: Colors.green
+    },
+
     listHeaderText: {
         fontWeight: 'bold',
         color: Colors.white
