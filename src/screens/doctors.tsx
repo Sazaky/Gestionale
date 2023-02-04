@@ -16,7 +16,6 @@ export const Doctors = () => {
         const db = await createDb();
         const myDoctors = await getDoctors(db);
         setDoctors(myDoctors);
-        console.log(doctors);
     }, []);
 
 

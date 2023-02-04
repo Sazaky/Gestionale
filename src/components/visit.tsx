@@ -6,7 +6,7 @@ import { Visit } from '../models/visit';
 import { useCallback, useEffect, useState } from 'react';
 import { VisitPropsNavigation } from '../routes/types';
 import { createDb } from '../models/db';
-import { getOutcomesByVisitId } from '../services/outcomes';
+import { getOutcomesByVisitId } from '../services/outcome';
 import { Outcome } from '../models/outcome';
 import { OutcomeMiniItem } from './outcome';
 
