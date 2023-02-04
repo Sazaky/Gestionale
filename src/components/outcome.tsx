@@ -14,7 +14,7 @@ const productInfoType = (info: number) => {
             );
         case 0:
             return (
-                <View style={styles.visitOutcomeButtonNeutral}>
+                <View style={{...styles.visitOutcomeButtonNeutral, backgroundColor: Colors.purple}}>
                     <Text style={styles.visitOutcomeText}>BROCHURE</Text>
                 </View>
             );
