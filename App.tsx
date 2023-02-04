@@ -14,7 +14,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { createDb, createTables } from './src/models/db';
-import { Doctors } from './src/screens/doctors';
+import { Doctors } from './src/screens/Doctors';
 import { DoctorScreen } from './src/screens/doctor';
 import { StackParamList } from './src/routes/types';
 import { VisitScreen } from './src/screens/visit';
@@ -56,12 +56,5 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  highlight: {
-    fontWeight: '700',
-    textAlign: 'center',
-    verticalAlign: 'center',
-  },
-});
 
 export default App;
