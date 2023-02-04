@@ -1,3 +1,4 @@
+import { useIsFocused } from "@react-navigation/native";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, SafeAreaView } from "react-native";
 import { DoctorItem } from "../components/doctor";
@@ -8,9 +9,8 @@ import { getDoctors } from "../services/doctor";
 
 export const Doctors = () => {
 
-    const startDoctors: Doctor[] = [];
-    const [doctors, setDoctors] = useState(startDoctors);
-
+    const [doctors, setDoctors] = useState([] as Doctor[]);
+    const isVisible = useIsFocused();
 
     const loadDataCallback = useCallback(async () => {
         const db = await createDb();
@@ -22,7 +22,7 @@ export const Doctors = () => {
 
     useEffect(() => {
         loadDataCallback();
-    }, [loadDataCallback]);
+    }, [loadDataCallback, isVisible]);
 
 
     return (
