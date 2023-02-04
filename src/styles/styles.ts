@@ -29,10 +29,23 @@ export const styles = StyleSheet.create({
         color: Colors.green
     },
 
+    formButton: {
+        alignItems: 'center',
+        borderRadius: 10,
+        padding: 20,
+        backgroundColor: Colors.green,
+        marginTop: 30,
+        position: 'relative',
+    },
+
     listHeaderText: {
         fontWeight: 'bold',
         color: Colors.white
     },
+
+    formButtonLabel: {
+        fontWeight: 'bold',
+        color: Colors.white    },
 
     doctorItem: {
         flex: 1,
