@@ -30,3 +30,14 @@ export const getDoctorById = async (db: SQLiteDatabase, id: number): Promise<Doc
         throw Error('Failed to get doctors !!!');
     }
 };
+
+export const putDoctor = async (db: SQLiteDatabase, d: Doctor) => {
+    const putQuery = `INSERT OR REPLACE INTO doctor (name, last_name, specialization, address, postal_code, email, phone, mobile)
+        VALUES
+        ( '${d.name}', '${d.last_name}', '${d.specialization}', '${d.address}', '${d.postal_code}', '${d.email}', '${d.phone}', '${d.mobile}')
+        ;`;
+    
+    console.log(putQuery);
+
+    return db.executeSql(putQuery);
+  };
