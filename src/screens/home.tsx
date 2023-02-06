@@ -2,13 +2,14 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { Colors } from "../styles/colors";
 import { SvgUri } from 'react-native-svg';
 import { useNavigation } from "@react-navigation/native";
-import { DoctorPropsNavigation, VisitPropsNavigation } from "../routes/types";
+import { DoctorPropsNavigation, DrugsPropsNavigation, VisitPropsNavigation } from "../routes/types";
 
 // https://www.svgrepo.com/collection/health-icons-outlined/2
 
 export const Home = () => {
 
     const navDoctor = useNavigation<DoctorPropsNavigation>();
+    const navDrugs = useNavigation<DrugsPropsNavigation>();
 
     return (
         <View style={{ backgroundColor: Colors.white }}>
@@ -21,10 +22,10 @@ export const Home = () => {
                     <SvgUri width="50%" height="50%" uri='https://www.svgrepo.com/download/325869/city-worker.svg' />
                     <Text>PROFILO</Text>
                 </View>
-                <View style={{ width: '33.33%', alignItems: 'center' }}>
+                <TouchableOpacity style={{ width: '33.33%', alignItems: 'center' }} onPress={() => navDrugs.navigate('Farmaci')}>
                     <SvgUri width="50%" height="50%" uri='https://www.svgrepo.com/download/325975/medicines.svg' />
                     <Text>FARMACI</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     );

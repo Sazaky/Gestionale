@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { FlatList, SafeAreaView, Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { createDb } from "../models/db";
 import { Doctor } from "../models/doctor";
 import { getDoctorById } from "../services/doctor";

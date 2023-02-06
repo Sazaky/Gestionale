@@ -7,7 +7,7 @@ import { OutcomeHeader } from "../components/outcomeHeader";
 import { createDb } from "../models/db";
 import { Outcome } from "../models/outcome";
 import { VisitProps } from "../routes/types";
-import { getOutcomesByVisitId } from "../services/outcomes";
+import { getOutcomesByVisitId } from "../services/outcome";
 
 export const VisitScreen = ({ route, navigation }: VisitProps) => {
 

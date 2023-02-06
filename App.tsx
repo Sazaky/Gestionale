@@ -8,18 +8,20 @@
  * @format
  */
 
-import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect } from 'react';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { createDb, createTables } from './src/models/db';
-import { Doctors } from './src/screens/doctors';
+import { Doctors } from './src/screens/Doctors';
 import { DoctorScreen } from './src/screens/doctor';
 import { StackParamList } from './src/routes/types';
 import { VisitScreen } from './src/screens/visit';
 import { Home } from './src/screens/home';
-import { AddDoctorModal, addDoctorModal } from './src/screens/AddDoctorModal';
+import { AddDoctorModal } from './src/screens/AddDoctorModal';
+import { Drugs } from './src/screens/Drugs';
+import { AddDrugModal } from './src/screens/AddDrugModal';
 
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -43,23 +45,18 @@ const App = () => {
         <Stack.Group>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Medici" component={Doctors} />
+        <Stack.Screen name="Farmaci" component={Drugs} />
         <Stack.Screen name="Medico" component={DoctorScreen} initialParams={{ doctorId: undefined }} />
         <Stack.Screen name="Visita" component={VisitScreen} initialParams={{ visitId: undefined }} />
         </Stack.Group>
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="AggiungiMedico" component={AddDoctorModal} />
+        <Stack.Screen name="AggiungiFarmaco" component={AddDrugModal} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  highlight: {
-    fontWeight: '700',
-    textAlign: 'center',
-    verticalAlign: 'center',
-  },
-});
 
 export default App;
