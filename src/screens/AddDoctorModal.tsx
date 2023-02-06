@@ -1,10 +1,10 @@
+import React from "react";
 import { useState } from "react";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { createDb } from "../models/db";
 import { Doctor } from "../models/doctor";
 import { AddDoctorProps } from "../routes/types";
 import { putDoctor } from "../services/doctor";
-import { Colors } from "../styles/colors";
 import { styles } from "../styles/styles";
 
 export const AddDoctorModal = ({ route, navigation }: AddDoctorProps) => {

@@ -25,3 +25,14 @@ export const getDrugs = async (db: SQLiteDatabase): Promise<Drug[]> => {
         throw Error('Failed to get drugs !!!');
     }
 };
+
+export const putDrug = async (db: SQLiteDatabase, d: Drug) => {
+    const putQuery = `INSERT OR REPLACE INTO product (name, description)
+        VALUES
+        ( '${d.name}', '${d.description}')
+        ;`;
+    
+    console.log(putQuery);
+
+    return db.executeSql(putQuery);
+  };
