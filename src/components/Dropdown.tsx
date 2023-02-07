@@ -9,16 +9,21 @@ import {
 } from 'react-native';
 import { Colors } from '../styles/colors';
 
+interface Item {
+    label: string; 
+    value: number 
+}
+
 interface Props {
   label: string;
-  data: Array<{ label: string; value: string }>;
-  onSelect: (item: { label: string; value: number }) => void;
+  data: Array<Item>;
+  onSelect: (item: Item) => void;
 }
 
 const Dropdown = ({ label, data, onSelect } : Props) => {
   const DropdownButton = useRef();
   const [visible, setVisible] = useState(false);
-  const [selected, setSelected] = useState(undefined);
+  const [selected, setSelected] = useState({} as Item);
   const [dropdownTop, setDropdownTop] = useState(0);
 
   const toggleDropdown = (): void => {
@@ -32,15 +37,15 @@ const Dropdown = ({ label, data, onSelect } : Props) => {
     setVisible(true);
   };
 
-  const onItemPress = (item): void => {
+  const onItemPress = (item : Item): void => {
     setSelected(item);
     onSelect(item);
     setVisible(false);
   };
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.item} onPress={() => onItemPress(item)}>
-      <Text style={{color: Colors.white}}>{item.label}</Text>
+  const renderItem = (props : { item : Item}) => (
+    <TouchableOpacity style={styles.item} onPress={() => onItemPress(props.item)}>
+      <Text style={{color: Colors.white}}>{props.item.label}</Text>
     </TouchableOpacity>
   );
 
