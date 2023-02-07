@@ -1,3 +1,4 @@
+import React from "react";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { createDb } from "../models/db";
@@ -10,7 +11,6 @@ import { VisitItem } from "../components/visit";
 import { VisitsHeader } from "../components/visitsHeader";
 import { styles } from "../styles/styles";
 import { Colors } from "../styles/colors";
-
 
 export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
 
