@@ -21,6 +21,7 @@ import { Home } from './src/screens/Home';
 import { AddDoctorModal } from './src/screens/AddDoctorModal';
 import { Drugs } from './src/screens/Drugs';
 import { AddDrugModal } from './src/screens/AddDrugModal';
+import { AddVisitModal } from './src/screens/AddVisitModal';
 
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -51,6 +52,7 @@ const App = () => {
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="AggiungiMedico" component={AddDoctorModal} />
         <Stack.Screen name="AggiungiFarmaco" component={AddDrugModal} />
+        <Stack.Screen name="AggiungiVisita" component={AddVisitModal} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

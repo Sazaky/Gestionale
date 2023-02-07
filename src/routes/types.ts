@@ -6,7 +6,8 @@ export type StackParamList = {
     Medico: { doctorId: number },
     Visita: { visitId: number },
     AggiungiMedico: undefined,
-    AggiungiFarmaco: undefined
+    AggiungiFarmaco: undefined,
+    AggiungiVisita: undefined
 };
 
 export type DoctorProps = NativeStackScreenProps<StackParamList, 'Medico'>;
@@ -19,3 +20,5 @@ export type DrugsProps = NativeStackScreenProps<StackParamList, 'Farmaci'>;
 export type DrugsPropsNavigation = DrugsProps['navigation'];
 export type AddDrugProps = NativeStackScreenProps<StackParamList, 'AggiungiFarmaco'>;
 export type AddDrugPropsNavigation = AddDrugProps['navigation'];
+export type AddVisitProps = NativeStackScreenProps<StackParamList, 'AggiungiVisita'>;
+export type AddVisitPropsNavigation = AddVisitProps['navigation'];

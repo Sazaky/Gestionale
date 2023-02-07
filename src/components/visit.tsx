@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -9,10 +11,6 @@ import { createDb } from '../models/db';
 import { getOutcomesByVisitId } from '../services/outcome';
 import { Outcome } from '../models/outcome';
 import { OutcomeMiniItem } from './outcome';
-
-
-
-
 
 export const VisitItem = (props: { visit: Visit }) => {
 
