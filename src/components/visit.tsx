@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -9,10 +11,7 @@ import { createDb } from '../models/db';
 import { getOutcomesByVisitId } from '../services/outcome';
 import { Outcome } from '../models/outcome';
 import { OutcomeMiniItem } from './outcome';
-
-
-
-
+import { Colors } from '../styles/colors';
 
 export const VisitItem = (props: { visit: Visit }) => {
 
@@ -62,7 +61,8 @@ export const VisitItem = (props: { visit: Visit }) => {
 
     return (
         <TouchableOpacity style={styles.visitItem} onPress={navigateToVisita}>
-            <Text style={styles.visitDate}>{(new Date(Date.parse(props.visit.date))).toLocaleDateString()}</Text>
+            <Text style={styles.visitDate}>{(props.visit.date).toLocaleDateString()}</Text>
+            <Text style={{margin: 5, fontStyle: 'italic', color: Colors.black}}>{props.visit.note}</Text>
             {renderVisitItem(props.visit.outcome)}
         </TouchableOpacity>
     );

@@ -3,6 +3,7 @@ import { styles } from '../styles/styles';
 import { Outcome } from '../models/outcome';
 import { Colors } from '../styles/colors';
 import { SvgUri } from 'react-native-svg';
+import React from 'react';
 
 const productInfoType = (info: number) => {
     switch (info) {

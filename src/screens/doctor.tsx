@@ -29,6 +29,7 @@ export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
 
 
     useEffect(() => {
+        console.log(visits);
         loadDataCallback();
     }, [loadDataCallback]);
 
@@ -49,7 +50,7 @@ export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
                    
             </View>
 
-            <FlatList data={visits} renderItem={({ item }) => <VisitItem visit={item} />} ListHeaderComponent={() => <VisitsHeader />} />
+            <FlatList data={visits} renderItem={({ item }) => <VisitItem visit={item} />} ListHeaderComponent={() => <VisitsHeader doctor={doctor.id} agent={visits[0] && visits[0].agent_id} />} />
         </View>
     );
 }

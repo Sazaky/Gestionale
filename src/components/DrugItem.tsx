@@ -2,6 +2,7 @@ import { Text, View } from 'react-native';
 
 import { styles } from '../styles/styles';
 import { Drug } from '../models/drug';
+import React from 'react';
 
 export const DrugItem = (props: { drug: Drug }) => {
 

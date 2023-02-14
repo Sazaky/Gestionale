@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Text, TouchableOpacity, View } from "react-native";
 import { Colors } from "../styles/colors";
 import { SvgUri } from 'react-native-svg';
