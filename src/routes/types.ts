@@ -7,7 +7,7 @@ export type StackParamList = {
     Visita: { visitId: number },
     AggiungiMedico: undefined,
     AggiungiFarmaco: undefined,
-    AggiungiVisita: undefined
+    AggiungiVisita: { doctorId: number, agentId: number }
 };
 
 export type DoctorProps = NativeStackScreenProps<StackParamList, 'Medico'>;

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Colors } from '../styles/colors';
 
-interface Item {
+export interface Item {
     label: string; 
     value: number 
 }

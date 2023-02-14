@@ -5,14 +5,14 @@ import { AddVisitPropsNavigation } from '../routes/types';
 import { Colors } from '../styles/colors';
 import { styles } from '../styles/styles';
 
-export const VisitsHeader= () => {
+export const VisitsHeader= (props:{doctor: number, agent: number}) => {
 
     const navigation = useNavigation<AddVisitPropsNavigation>();
 
     return (
         <View style={{...styles.listHeader, flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={styles.listHeaderText}>APPUNTAMENTI</Text>
-            <TouchableOpacity style={{borderRadius: 20, borderWidth: 2, borderColor: Colors.white}} onPress={()=>navigation.navigate('AggiungiVisita')}>
+            <TouchableOpacity style={{borderRadius: 20, borderWidth: 2, borderColor: Colors.white}} onPress={()=>navigation.navigate('AggiungiVisita', {doctorId: props.doctor, agentId: props.agent})}>
                 <Text style={{color: Colors.white, fontWeight: 'bold', padding: 5}}> + </Text>
             </TouchableOpacity>
         </View>
