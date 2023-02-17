@@ -7,7 +7,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Visit } from "../models/visit";
 import { AddVisitProps } from "../routes/types";
 import { styles } from "../styles/styles";
-import { Outcome, OutcomeTypeArray } from "../models/outcome";
+import { Outcome } from "../models/outcome";
 import { putVisit } from "../services/visit";
 import { Colors } from "../styles/colors";
 import OutcomeSelect from "../components/OutcomeSelect";
@@ -17,12 +17,13 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
 
     const [visit, updVisit] = useState<Visit>({} as Visit);
     const [outcomes, updOutcomes] = useState([] as Outcome[]);
-    const [modal, setVisible] = useState(false);
+
+    
 
     const initializeVisit = useCallback(async () => {
         updVisit({ ...visit, doctor_id: route.params.doctorId, agent_id: route.params.agentId });
     }, []);
- 
+
 
     useEffect(() => {
         initializeVisit();
@@ -37,12 +38,11 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
 
     return (
         <View style={{ margin: 10 }}>
-            <View style={{...styles.textInput, flexDirection: 'row', alignContent: 'flex-start'}}>
-            <DateTimePicker testID="dateTimePicker" value={visit.date || new Date()} mode={'date'} is24Hour={true} onChange={(event, myDate) => { myDate && updVisit({ ...visit, date: myDate }) }} />
-
+            <View style={{ ...styles.textInput, flexDirection: 'row', alignContent: 'flex-start' }}>
+                <DateTimePicker testID="dateTimePicker" value={visit.date || new Date()} mode={'date'} is24Hour={true} onChange={(event, myDate) => { myDate && updVisit({ ...visit, date: myDate }) }} />
             </View>
-            <OutcomeSelect />
-            <ProductOutcomeSelect />
+            <OutcomeSelect updVisit={updVisit} visit={visit}/>
+            <ProductOutcomeSelect updOutcomes={updOutcomes} outcomes={outcomes}/>
             <View>
                 <Text style={styles.textInputLabel}>NOTE</Text>
                 <TextInput style={{ ...styles.textInput, height: 100 }} multiline={true} onChangeText={(myNote) => updVisit({ ...visit, note: myNote })} placeholder="Lasciato campione Aspirina1000" value={visit.note} />

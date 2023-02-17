@@ -1,45 +1,36 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
+import { OutcomeTypeArray } from '../models/outcome';
+import { Visit } from '../models/visit';
 import { Colors } from '../styles/colors';
 
-const data = [
-  { label: 'Item 1', value: '1' },
-  { label: 'Item 2', value: '2' },
-  { label: 'Item 3', value: '3' },
-  { label: 'Item 4', value: '4' },
-  { label: 'Item 5', value: '5' },
-  { label: 'Item 6', value: '6' },
-  { label: 'Item 7', value: '7' },
-  { label: 'Item 8', value: '8' },
-];
+const OutcomeSelect = (props : {updVisit: React.Dispatch<React.SetStateAction<Visit>>, visit: Visit}) => {
 
-const OutcomeSelect = () => {
-  const [value, setValue] = useState<string>();
   const [isFocus, setIsFocus] = useState(false);
 
   return (
     <View style={styles.container}>   
       <Dropdown
-        statusBarIsTranslucent={true}
+        statusBarIsTranslucent={false}
         style={[styles.dropdown, isFocus && { borderColor: Colors.green_bright }]}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
-        data={data}
+        data={OutcomeTypeArray}
         search
         maxHeight={300}
         labelField="label"
         valueField="value"
         placeholder={!isFocus ? 'Esito' : '...'}
         searchPlaceholder="Cerca..."
-        value={value}
+        value={OutcomeTypeArray[props.visit.outcome]}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={(item) => {
-          setValue(item.value);
+          props.updVisit({ ...props.visit, outcome: item.value });
           setIsFocus(false);
         }}
       />

@@ -1,35 +1,42 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { MultiSelect } from 'react-native-element-dropdown';
+import { createDb } from '../models/db';
+import { DrugLight } from '../models/drug';
+import { Outcome } from '../models/outcome';
+import { getDrugsLight } from '../services/drug';
 import { Colors } from '../styles/colors';
 
-const data = [
-  { label: 'Item 1', value: '1' },
-  { label: 'Item 2', value: '2' },
-  { label: 'Item 3', value: '3' },
-  { label: 'Item 4', value: '4' },
-  { label: 'Item 5', value: '5' },
-  { label: 'Item 6', value: '6' },
-  { label: 'Item 7', value: '7' },
-  { label: 'Item 8', value: '8' },
-];
-
-const ProductOutcomeSelect = () => {
+const ProductOutcomeSelect = (props: {updOutcomes: React.Dispatch<React.SetStateAction<Outcome[]>>, outcomes: Outcome[]}) => {
   const [selected, setSelected] = useState<string[]>([]);
   const ref = useRef(null);
+
+  const [drugs, setDrugs] = useState([] as DrugLight[]);
+
+  const loadDataCallback = useCallback(async () => {
+    const db = await createDb();
+    const myDrugs = await getDrugsLight(db);
+    console.log(myDrugs);
+    setDrugs(myDrugs);
+  }, []);
+
+
+  useEffect(() => {
+      loadDataCallback();
+  }, [loadDataCallback]);
 
   const onSelectAll = (isSelectAll = true) => {
     const selectItem: string[] = [];
     if (isSelectAll) {
-      data.map((item) => {
-        selectItem.push(item.value);
+      drugs.map((item) => {
+        selectItem.push(item.name);
       });
     }
     setSelected(selectItem);
   };
 
   const renderSelectAllIcon = () => {
-    const isSelectAll = selected.length === data.length;
+    const isSelectAll = selected.length === drugs.length;
     return (
       <TouchableOpacity
         style={styles.wrapSelectAll}
@@ -54,11 +61,11 @@ const ProductOutcomeSelect = () => {
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         search
-        data={data}
-        labelField="label"
-        valueField="value"
+        data={drugs}
+        labelField="name"
+        valueField="id"
         placeholder="Seleziona Materiale"
-        searchPlaceholder="Search..."
+        searchPlaceholder="Cerca..."
         value={selected}
         onChange={(item) => {
           setSelected(item);
