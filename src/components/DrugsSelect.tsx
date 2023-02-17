@@ -7,7 +7,7 @@ import { Outcome } from '../models/outcome';
 import { getDrugsLight } from '../services/drug';
 import { Colors } from '../styles/colors';
 
-const ProductOutcomeSelect = (props: {updOutcomes: React.Dispatch<React.SetStateAction<Outcome[]>>, outcomes: Outcome[]}) => {
+const DrugsSelect = (props: {updOutcomes: React.Dispatch<React.SetStateAction<Outcome[]>>, outcomes: Outcome[]}) => {
   const [selected, setSelected] = useState<string[]>([]);
   const ref = useRef(null);
 
@@ -77,11 +77,11 @@ const ProductOutcomeSelect = (props: {updOutcomes: React.Dispatch<React.SetState
   );
 };
 
-export default ProductOutcomeSelect;
+export default DrugsSelect;
 
 const styles = StyleSheet.create({
   container: { 
-    marginTop: 10,
+    // marginTop: 0,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: Colors.green
