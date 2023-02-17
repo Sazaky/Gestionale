@@ -14,10 +14,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { createDb, createTables } from './src/models/db';
 import { Doctors } from './src/screens/Doctors';
-import { DoctorScreen } from './src/screens/Doctor';
+import { DoctorScreen } from './src/screens/doctor';
 import { StackParamList } from './src/routes/types';
 import { VisitScreen } from './src/screens/Visit';
-import { Home } from './src/screens/Home';
+import { Home } from './src/screens/home';
 import { AddDoctorModal } from './src/screens/AddDoctorModal';
 import { Drugs } from './src/screens/Drugs';
 import { AddDrugModal } from './src/screens/AddDrugModal';
