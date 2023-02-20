@@ -3,3 +3,9 @@ export interface Drug {
     name: string,
     description: string
   }
+
+ export interface DrugLight {
+    id: number,
+    name: string,
+    description: string
+  }

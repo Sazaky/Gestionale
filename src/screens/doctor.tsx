@@ -11,17 +11,19 @@ import { VisitItem } from "../components/visit";
 import { VisitsHeader } from "../components/visitsHeader";
 import { styles } from "../styles/styles";
 import { Colors } from "../styles/colors";
+import { useIsFocused } from "@react-navigation/native";
 
 export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
 
     const [doctor, setDoctor] = useState({} as Doctor);
     const [visits, setVisits] = useState([] as Visit[]);
+    const isVisible = useIsFocused();
+
 
 
     const loadDataCallback = useCallback(async () => {
         const db = await createDb();
         const myDoctor = await getDoctorById(db, route.params.doctorId);
-        console.log(route.params.doctorId)
         setDoctor(myDoctor);
         const myVisits = await getVisitsByDoctorId(db, route.params.doctorId);
         setVisits(myVisits);
@@ -31,7 +33,7 @@ export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
     useEffect(() => {
         console.log(visits);
         loadDataCallback();
-    }, [loadDataCallback]);
+    }, [loadDataCallback, isVisible]);
 
 
     return (
