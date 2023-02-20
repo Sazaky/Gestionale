@@ -11,11 +11,14 @@ import { VisitItem } from "../components/visit";
 import { VisitsHeader } from "../components/visitsHeader";
 import { styles } from "../styles/styles";
 import { Colors } from "../styles/colors";
+import { useIsFocused } from "@react-navigation/native";
 
 export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
 
     const [doctor, setDoctor] = useState({} as Doctor);
     const [visits, setVisits] = useState([] as Visit[]);
+    const isVisible = useIsFocused();
+
 
 
     const loadDataCallback = useCallback(async () => {
@@ -30,7 +33,7 @@ export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
     useEffect(() => {
         console.log(visits);
         loadDataCallback();
-    }, [loadDataCallback]);
+    }, [loadDataCallback, isVisible]);
 
 
     return (
