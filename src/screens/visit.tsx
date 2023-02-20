@@ -6,13 +6,13 @@ import { DoctorsHeader } from "../components/doctorsHeader";
 import { OutcomeItem } from "../components/outcome";
 import { OutcomeHeader } from "../components/outcomeHeader";
 import { createDb } from "../models/db";
-import { Outcome } from "../models/outcome";
+import { Outcome, OutcomeFull } from "../models/outcome";
 import { VisitProps } from "../routes/types";
 import { getOutcomesByVisitId } from "../services/outcome";
 
 export const VisitScreen = ({ route, navigation }: VisitProps) => {
 
-    const [outcomes, setOutcomes] = useState([] as Outcome[]);
+    const [outcomes, setOutcomes] = useState([] as OutcomeFull[]);
 
 
     const loadDataCallback = useCallback(async () => {

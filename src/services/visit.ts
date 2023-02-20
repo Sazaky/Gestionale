@@ -27,7 +27,17 @@ export const putVisit = async (db: SQLiteDatabase, v: Visit) => {
         VALUES
         ( '${v.doctor_id}', '${v.agent_id}', '${v.date.toISOString()}', '${v.outcome}', '${v.note}')
         ;`;
-    console.log(putQuery);
 
-    return db.executeSql(putQuery);
+    db.executeSql(putQuery)
+
+    const getQuery = `SELECT id FROM visit
+        WHERE
+        doctor_id = '${v.doctor_id}' AND 
+        agent_id ='${v.agent_id}' AND 
+        date = '${v.date.toISOString()}' AND 
+        outcome = '${v.outcome}';`;
+
+    const results = await db.executeSql(getQuery);
+
+    return results[0].insertId;
   };

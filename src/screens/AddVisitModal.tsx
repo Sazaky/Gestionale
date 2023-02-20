@@ -7,16 +7,18 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Visit } from "../models/visit";
 import { AddVisitProps } from "../routes/types";
 import { styles } from "../styles/styles";
-import { Outcome } from "../models/outcome";
+import { Outcome, OutcomeInfoType } from "../models/outcome";
 import { putVisit } from "../services/visit";
-import { Colors } from "../styles/colors";
 import OutcomeSelect from "../components/OutcomeSelect";
 import DrugsSelect from "../components/DrugsSelect";
+import { CommonActions } from "@react-navigation/native";
+import { putOutcomesByVisitId } from "../services/outcome";
 
 export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
 
     const [visit, updVisit] = useState<Visit>({} as Visit);
-    const [outcomes, updOutcomes] = useState([] as Outcome[]);
+    const [samples, updSamples] = useState([] as string[]);
+    const [depliants, updDepliants] = useState([] as string[]);
 
     
 
@@ -31,8 +33,12 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
 
     const putMyVisit = async (v: Visit) => {
         console.log(v)
+        const myDepliants = depliants.map(item => {return({product_id: parseInt(item), product_info_type: OutcomeInfoType.DEPLIANT })})
+        const mySamples = samples.map(item => {return({product_id: parseInt(item), product_info_type: OutcomeInfoType.CAMPIONE })})
+        console.log();
         const db = await createDb();
-        await putVisit(db, v);
+        const visitId = await putVisit(db, v);
+        putOutcomesByVisitId(db, myDepliants.concat(mySamples) as Outcome[], visitId);
         navigation.goBack();
     }
 
@@ -44,11 +50,11 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
             <OutcomeSelect updVisit={updVisit} visit={visit}/>
             <View>
                 <Text style={styles.textInputLabel}>CAMPIONI</Text>
-                <DrugsSelect updOutcomes={updOutcomes} outcomes={outcomes}/>
+                <DrugsSelect updOutcomes={updSamples} />
             </View>
             <View>
                 <Text style={styles.textInputLabel}>DEPLIANT</Text>
-                <DrugsSelect updOutcomes={updOutcomes} outcomes={outcomes}/>
+                <DrugsSelect updOutcomes={updDepliants} />
             </View>
             <View>
                 <Text style={styles.textInputLabel}>NOTE</Text>

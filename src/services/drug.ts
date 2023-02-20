@@ -53,7 +53,5 @@ export const putDrug = async (db: SQLiteDatabase, d: Drug) => {
         ( '${d.name}', '${d.description}')
         ;`;
     
-    console.log(putQuery);
-
     return db.executeSql(putQuery);
   };

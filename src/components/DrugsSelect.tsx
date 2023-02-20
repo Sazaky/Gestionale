@@ -3,11 +3,10 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { MultiSelect } from 'react-native-element-dropdown';
 import { createDb } from '../models/db';
 import { DrugLight } from '../models/drug';
-import { Outcome } from '../models/outcome';
 import { getDrugsLight } from '../services/drug';
 import { Colors } from '../styles/colors';
 
-const DrugsSelect = (props: {updOutcomes: React.Dispatch<React.SetStateAction<Outcome[]>>, outcomes: Outcome[]}) => {
+const DrugsSelect = (props: {updOutcomes: React.Dispatch<React.SetStateAction<string[]>>}) => {
   const [selected, setSelected] = useState<string[]>([]);
   const ref = useRef(null);
 
@@ -69,6 +68,7 @@ const DrugsSelect = (props: {updOutcomes: React.Dispatch<React.SetStateAction<Ou
         value={selected}
         onChange={(item) => {
           setSelected(item);
+          props.updOutcomes(item);
         }}
         selectedStyle={styles.selectedStyle}
         flatListProps={{ ListHeaderComponent: renderSelectAllIcon }}

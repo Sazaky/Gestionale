@@ -21,7 +21,6 @@ export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
     const loadDataCallback = useCallback(async () => {
         const db = await createDb();
         const myDoctor = await getDoctorById(db, route.params.doctorId);
-        console.log(route.params.doctorId)
         setDoctor(myDoctor);
         const myVisits = await getVisitsByDoctorId(db, route.params.doctorId);
         setVisits(myVisits);
