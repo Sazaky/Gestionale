@@ -11,8 +11,8 @@ import { Outcome, OutcomeInfoType } from "../models/outcome";
 import { putVisit } from "../services/visit";
 import OutcomeSelect from "../components/OutcomeSelect";
 import DrugsSelect from "../components/DrugsSelect";
-import { CommonActions } from "@react-navigation/native";
 import { putOutcomesByVisitId } from "../services/outcome";
+import { VisitDatePicker } from "../components/VisitDatePicker";
 
 export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
 
@@ -25,6 +25,10 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
     const initializeVisit = useCallback(async () => {
         updVisit({ ...visit, doctor_id: route.params.doctorId, agent_id: route.params.agentId });
     }, []);
+
+    const updVisitDate = (myDate: Date) => {
+        updVisit({...visit, date: myDate})
+    }
 
 
     useEffect(() => {
@@ -44,9 +48,8 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
 
     return (
         <View style={{ margin: 10 }}>
-            <View style={{ ...styles.textInput, flexDirection: 'row', alignContent: 'flex-start' }}>
-                <DateTimePicker testID="dateTimePicker" value={visit.date || new Date()} mode={'date'} is24Hour={true} onChange={(event, myDate) => { myDate && updVisit({ ...visit, date: myDate }) }} />
-            </View>
+
+            <VisitDatePicker updDate={updVisitDate}/>
             <OutcomeSelect updVisit={updVisit} visit={visit}/>
             <View>
                 <Text style={styles.textInputLabel}>CAMPIONI</Text>
