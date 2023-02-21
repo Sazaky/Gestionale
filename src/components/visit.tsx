@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { ScrollView, Text, View } from 'react-native';
 
 import { styles } from '../styles/styles';
 import { Visit } from '../models/visit';
 import { useCallback, useEffect, useState } from 'react';
-import { VisitPropsNavigation } from '../routes/types';
 import { createDb } from '../models/db';
 import { getOutcomesByVisitId } from '../services/outcome';
 import { Outcome } from '../models/outcome';
@@ -15,22 +13,19 @@ import { Colors } from '../styles/colors';
 
 export const VisitItem = (props: { visit: Visit }) => {
 
-    const navigation = useNavigation<VisitPropsNavigation>();
-    const navigateToVisita = () => navigation.navigate('Visita', { visitId: props.visit.id })
-
     const [outcomes, setOutcomes] = useState([] as Outcome[]);
 
     const renderVisitItem = (outcome: number) => {
         switch (outcome) {
             case 1:
                 return (
-                    <ScrollView contentContainerStyle={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {outcomes.map((item) => {
                             return (
                                 <OutcomeMiniItem outcome={item} key={item.id} />
                             );
                         })}
-                    </ScrollView>
+                    </View>
                 );
             case 0:
                 return (
@@ -60,10 +55,10 @@ export const VisitItem = (props: { visit: Visit }) => {
     }, [loadDataCallback]);
 
     return (
-        <TouchableOpacity style={styles.visitItem} onPress={navigateToVisita}>
+        <View style={styles.visitItem}>
             <Text style={styles.visitDate}>{(props.visit.date).toLocaleDateString()}</Text>
             <Text style={{margin: 5, fontStyle: 'italic', color: Colors.black}}>{props.visit.note}</Text>
             {renderVisitItem(props.visit.outcome)}
-        </TouchableOpacity>
+        </View>
     );
 }
