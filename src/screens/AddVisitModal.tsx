@@ -42,7 +42,7 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
         console.log();
         const db = await createDb();
         const visitId = await putVisit(db, v);
-        putOutcomesByVisitId(db, myDepliants.concat(mySamples) as Outcome[], visitId);
+        await putOutcomesByVisitId(db, myDepliants.concat(mySamples) as Outcome[], visitId);
         navigation.goBack();
     }
 

@@ -32,7 +32,6 @@ export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
 
 
     useEffect(() => {
-        console.log(visits);
         loadDataCallback();
     }, [loadDataCallback, isVisible]);
 

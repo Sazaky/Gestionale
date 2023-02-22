@@ -11,7 +11,6 @@ export const AddDoctorModal = ({ route, navigation }: AddDoctorProps) => {
 
     const [doctor, updDoctor] = useState<Doctor>({} as Doctor);
     const putMyDoctor = async (d: Doctor) => {
-        console.log(d)
         const db = await createDb();
         await putDoctor(db, d);
         navigation.goBack();

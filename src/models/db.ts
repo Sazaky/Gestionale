@@ -19,9 +19,9 @@ let createDoctorTable = `CREATE TABLE IF NOT EXISTS doctor (
 
 let seedDoctorTable = `INSERT INTO doctor (name, last_name, specialization, address, postal_code, email, phone, mobile)
 VALUES
-( "Luciano", "Moggi", "Neuropsichiatra", "Via Mirafiori n. 1, 00123 Torino", "00123", "luciano.moggi@host.it", "066668987", "3396667123"),
-( "Pippo", "Inzaghi", "Chirurgo", "Via Giulio Cesare n. 2, 00456, Roma", "pippo.inzaghi@host.it", "00456", "0816668987", "3386667123"),
-( "Francesco", "Totti", "Naturopata", "Via Palermo n. 3, 00666, Firenze", "francesco.totti@host.it", "00666", "0865668987", "3346667123")
+( "Mario", "Verdi", "Neuropsichiatra", "Via Mirafiori n. 1, 00123 Torino", "00123", "mario.verdi@host.it", "066668987", "3396667123"),
+( "Bruno", "Rossi", "Chirurgo", "Via Giulio Cesare n. 2, 00456, Roma", "00456", "bruno.rossi@host.it", "0816668987", "3386667123"),
+( "Luca", "Bianchi", "Naturopata", "Via Palermo n. 3, 00666, Firenze", "00666", "luca.bianchi@host.it", "0865668987", "3346667123")
 ;`;
 
 let dropAgentTable = 'DROP TABLE IF EXISTS agent;';

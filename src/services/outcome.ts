@@ -16,7 +16,6 @@ export const getOutcomesByVisitId = async (db: SQLiteDatabase, id: number): Prom
 
         results.forEach(result => {
             for (let index = 0; index < result.rows.length; index++) {
-                console.log(result.rows.item(index));
                 resultArray.push(result.rows.item(index));
             }
         });
@@ -36,5 +35,6 @@ export const putOutcomesByVisitId = async (db: SQLiteDatabase, outcomes: Outcome
     }).join("\n").slice(0, -1)}
             ;`;
 
+    console.log(putQuery);
     return db.executeSql(putQuery);
 }

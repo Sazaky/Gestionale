@@ -16,7 +16,6 @@ import { createDb, createTables } from './src/models/db';
 import { Doctors } from './src/screens/Doctors';
 import { DoctorScreen } from './src/screens/doctor';
 import { StackParamList } from './src/routes/types';
-import { VisitScreen } from './src/screens/Visit';
 import { Home } from './src/screens/home';
 import { AddDoctorModal } from './src/screens/AddDoctorModal';
 import { Drugs } from './src/screens/Drugs';
@@ -47,7 +46,6 @@ const App = () => {
         <Stack.Screen name="Medici" component={Doctors} />
         <Stack.Screen name="Farmaci" component={Drugs} />
         <Stack.Screen name="Medico" component={DoctorScreen} initialParams={{ doctorId: undefined }} />
-        <Stack.Screen name="Visita" component={VisitScreen} initialParams={{ visitId: undefined }} />
         </Stack.Group>
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="AggiungiMedico" component={AddDoctorModal} />

@@ -22,7 +22,6 @@ export const getDoctors = async (db: SQLiteDatabase): Promise<Doctor[]> => {
 export const getDoctorById = async (db: SQLiteDatabase, id: number): Promise<Doctor> => {
     try {
         const results = await db.executeSql(`SELECT * FROM doctor WHERE id=${id};`);
-        console.log(results);
         const doctor : Doctor = results[0].rows.item(0);
         return doctor;
     } catch (error) {
@@ -37,7 +36,6 @@ export const putDoctor = async (db: SQLiteDatabase, d: Doctor) => {
         ( '${d.name}', '${d.last_name}', '${d.specialization}', '${d.address}', '${d.postal_code}', '${d.email}', '${d.phone}', '${d.mobile}')
         ;`;
     
-    console.log(putQuery);
 
     return db.executeSql(putQuery);
   };
