@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { createDb } from "../models/db";
 import { Doctor } from "../models/doctor";
 import { AddDoctorProps } from "../routes/types";
@@ -18,7 +18,7 @@ export const AddDoctorModal = ({ route, navigation }: AddDoctorProps) => {
     }
 
     return (
-        <View style={{ flex: 1, margin: 10 }}>
+        <ScrollView style={{ margin: 10 }}>
             <View>
                 <Text style={styles.textInputLabel}>NOME</Text>
                 <TextInput style={styles.textInput} onChangeText={(myName) => {updDoctor({...doctor, name: myName}) }} placeholder="Mario" value={doctor.name} />
@@ -54,6 +54,6 @@ export const AddDoctorModal = ({ route, navigation }: AddDoctorProps) => {
             <TouchableOpacity onPress={() => putMyDoctor(doctor)}  style={styles.formButton}>
                 <Text style={styles.formButtonLabel}>AGGIUNGI</Text>
             </TouchableOpacity>
-        </View>
+        </ScrollView>
     );
 }
