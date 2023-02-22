@@ -19,13 +19,13 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         padding: 10,
-        color: Colors.black 
+        color: Colors.black
     },
 
-    textInputLabel : { 
-        margin: 10, 
-        marginBottom: 0, 
-        fontWeight: 'bold', 
+    textInputLabel: {
+        margin: 10,
+        marginBottom: 0,
+        fontWeight: 'bold',
         color: Colors.green
     },
 
@@ -45,7 +45,8 @@ export const styles = StyleSheet.create({
 
     formButtonLabel: {
         fontWeight: 'bold',
-        color: Colors.white    },
+        color: Colors.white
+    },
 
     doctorItem: {
         flex: 1,
@@ -77,13 +78,30 @@ export const styles = StyleSheet.create({
     doctorSpecialization: {
         fontStyle: 'italic',
         color: Colors.green,
-        marginTop: 3,
+        marginVertical: 3,
         marginBottom: 3
     },
 
-    doctorPhone: {
-        color: Colors.black,
-        margin: 3
+    doctorDelay: {
+        backgroundColor: Colors.red, 
+        padding: 5, 
+        borderRadius: 15, 
+        margin: 10, 
+        width: 30,
+        height: 30,
+    },
+
+    doctorNoDelay: {
+        padding: 5, 
+        borderRadius: 15, 
+        margin: 10, 
+        width: 30,
+        height: 30,
+        backgroundColor: Colors.green    
+    },
+
+    statusText: {
+        color: Colors.white, fontWeight: 'bold', textAlign: 'center'
     },
 
     visitItem:
@@ -158,9 +176,9 @@ export const styles = StyleSheet.create({
     outcomeMiniItem: {
         flexDirection: 'row',
         margin: 5,
-        marginTop: 10, 
-        padding: 5, 
-        borderColor: Colors.black, 
+        marginTop: 10,
+        padding: 5,
+        borderColor: Colors.black,
         borderRadius: 20,
         //borderWidth: 1
     },

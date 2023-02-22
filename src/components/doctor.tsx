@@ -6,21 +6,25 @@ import { useNavigation } from '@react-navigation/native';
 import { Doctor } from "../models/doctor";
 import { styles } from '../styles/styles';
 import { DoctorPropsNavigation } from '../routes/types';
+import { Colors } from '../styles/colors';
 
 export const DoctorItem = (props: { doctor: Doctor }) => {
 
     const navigation = useNavigation<DoctorPropsNavigation>();
 
     return (
-        <TouchableOpacity style={styles.doctorItem} onPress={() => navigation.navigate('Medico', {doctorId: props.doctor.id})}>
+        <TouchableOpacity style={styles.doctorItem} onPress={() => navigation.navigate('Medico', { doctorId: props.doctor.id })}>
             <View >
                 <Text style={styles.doctorLastName}>{props.doctor.name} {props.doctor.last_name}</Text>
                 <Text style={styles.doctorSpecialization}>{props.doctor.specialization}</Text>
             </View>
             <View >
-                <Text style={styles.doctorPhone}>{props.doctor.phone}</Text>
-                <Text style={styles.doctorPhone}>{props.doctor.mobile}</Text>
+                {props.doctor.last_visit_delay > 0
+                    ? <View style={styles.doctorDelay}><Text style={styles.statusText}>{props.doctor.last_visit_delay}</Text></View>
+                    : <View style={styles.doctorNoDelay}><Text style={styles.statusText}>{props.doctor.last_visit_delay}</Text></View>
+                }
             </View>
+
         </TouchableOpacity>
     );
 }

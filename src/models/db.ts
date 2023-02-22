@@ -10,6 +10,7 @@ let createDoctorTable = `CREATE TABLE IF NOT EXISTS doctor (
     specialization varchar(50) NOT NULL,
     address varchar(256) NOT NULL,
     postal_code char(5) NOT NULL,
+    last_visit_delay integer,
     email varchar(256),
     phone varchar(14),
     mobile varchar(14),
@@ -17,11 +18,11 @@ let createDoctorTable = `CREATE TABLE IF NOT EXISTS doctor (
     longitude integer
 );`;
 
-let seedDoctorTable = `INSERT INTO doctor (name, last_name, specialization, address, postal_code, email, phone, mobile)
+let seedDoctorTable = `INSERT INTO doctor (name, last_name, specialization, address, postal_code, last_visit_delay, email, phone, mobile)
 VALUES
-( "Mario", "Verdi", "Neuropsichiatra", "Via Mirafiori n. 1, 00123 Torino", "00123", "mario.verdi@host.it", "066668987", "3396667123"),
-( "Bruno", "Rossi", "Chirurgo", "Via Giulio Cesare n. 2, 00456, Roma", "00456", "bruno.rossi@host.it", "0816668987", "3386667123"),
-( "Luca", "Bianchi", "Naturopata", "Via Palermo n. 3, 00666, Firenze", "00666", "luca.bianchi@host.it", "0865668987", "3346667123")
+( "Mario", "Verdi", "Neuropsichiatra", "Via Mirafiori n. 1, 00123 Torino", "00123", 12, "mario.verdi@host.it", "066668987", "3396667123"),
+( "Bruno", "Rossi", "Chirurgo", "Via Giulio Cesare n. 2, 00456, Roma", "00456", 2, "bruno.rossi@host.it", "0816668987", "3386667123"),
+( "Luca", "Bianchi", "Naturopata", "Via Palermo n. 3, 00666, Firenze", "00666", 0, "luca.bianchi@host.it", "0865668987", "3346667123")
 ;`;
 
 let dropAgentTable = 'DROP TABLE IF EXISTS agent;';

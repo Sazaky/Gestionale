@@ -5,7 +5,7 @@ enablePromise(true);
 export const getDoctors = async (db: SQLiteDatabase): Promise<Doctor[]> => {
     try {
         const resultArray: Doctor[] = []
-        const results = await db.executeSql("SELECT * FROM doctor;");
+        const results = await db.executeSql("SELECT * FROM doctor ORDER BY last_visit_delay DESC;");
 
         results.forEach(result => {
             for (let index = 0; index < result.rows.length; index++) {
