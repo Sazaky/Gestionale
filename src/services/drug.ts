@@ -15,7 +15,6 @@ export const getDrugs = async (db: SQLiteDatabase): Promise<Drug[]> => {
 
         results.forEach(result => {
             for (let index = 0; index < result.rows.length; index++) {
-                console.log(result.rows.item(index));
                 resultArray.push(result.rows.item(index));
             }
         });

@@ -14,7 +14,6 @@ export const getVisitsByDoctorId = async (db: SQLiteDatabase, id: number): Promi
                 resultArray.push(myItem);
             }
         });
-        console.log(resultArray)
         return resultArray;
     } catch (error) {
         console.error(error);
@@ -25,19 +24,18 @@ export const getVisitsByDoctorId = async (db: SQLiteDatabase, id: number): Promi
 export const putVisit = async (db: SQLiteDatabase, v: Visit) => {
     const putQuery = `INSERT OR REPLACE INTO visit (doctor_id, agent_id, date, outcome, note)
         VALUES
-        ( '${v.doctor_id}', '${v.agent_id}', '${v.date.toISOString()}', '${v.outcome}', '${v.note}')
+        ( ${v.doctor_id}, ${v.agent_id}, '${v.date.toISOString()}', ${v.outcome}, '${v.note}')
         ;`;
-
     db.executeSql(putQuery)
 
     const getQuery = `SELECT id FROM visit
         WHERE
-        doctor_id = '${v.doctor_id}' AND 
-        agent_id ='${v.agent_id}' AND 
+        doctor_id = ${v.doctor_id} AND 
+        agent_id = ${v.agent_id} AND 
         date = '${v.date.toISOString()}' AND 
-        outcome = '${v.outcome}';`;
+        outcome = ${v.outcome};`;
 
     const results = await db.executeSql(getQuery);
 
-    return results[0].insertId;
+    return results[0].rows.item(0).id;
   };
