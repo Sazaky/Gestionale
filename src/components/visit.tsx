@@ -58,7 +58,7 @@ export const VisitItem = (props: { visit: Visit }) => {
         <View style={styles.visitItem}>
             <Text style={styles.visitDate}>{(props.visit.date).toLocaleDateString()}</Text>
             <Text style={{margin: 5, fontStyle: 'italic', color: Colors.black}}>{props.visit.note}</Text>
-            {renderVisitItem(props.visit.outcome)}
+            {renderVisitItem(props.visit.status)}
         </View>
     );
 }

@@ -45,16 +45,17 @@ let createVisitTable = `CREATE TABLE IF NOT EXISTS visit (
     doctor_id integer NOT NULL,
     agent_id integer NOT NULL,
     date datetime NOT NULL,
-    outcome integer NOT NULL,
+    status integer NOT NULL,
     note text
 );`;
 
-let seedVisitTable = `INSERT INTO visit (doctor_id, agent_id, date, outcome, note)
+let seedVisitTable = `INSERT INTO visit (doctor_id, agent_id, date, status, note)
 VALUES
 ( 1, 0, '2023-01-01 12:00:00', -1, 'Non mi ha voluto ricevere'),
 ( 1, 0, '2023-01-02 12:00:00', 1, 'Depliant Aspirina 100, Campione Brufen' ),
 ( 1, 0, '2023-01-03 12:00:00', 0, 'Era fuori studio' ),
-( 1, 0, '2023-01-04 12:00:00', 1, 'Depliant Aspirina e Tachipirina')
+( 1, 0, '2023-01-04 12:00:00', 1, 'Depliant Aspirina e Tachipirina'),
+( 1, 0, '2023-12-31 12:00:00', 2, 'Interessato a Polase per corsa')
 ;`;
 
 let dropProductTable = 'DROP TABLE IF EXISTS product;';

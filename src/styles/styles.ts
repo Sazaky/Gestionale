@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 20,
         backgroundColor: Colors.green,
-        marginTop: 30,
+        marginVertical: 30,
         position: 'relative',
     },
 

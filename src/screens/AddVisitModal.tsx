@@ -20,14 +20,14 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
     const [samples, updSamples] = useState([] as string[]);
     const [depliants, updDepliants] = useState([] as string[]);
 
-    
+
 
     const initializeVisit = useCallback(async () => {
         updVisit({ ...visit, doctor_id: route.params.doctorId, agent_id: route.params.agentId });
     }, []);
 
     const updVisitDate = (myDate: Date) => {
-        updVisit({...visit, date: myDate})
+        updVisit({ ...visit, date: myDate })
     }
 
 
@@ -36,33 +36,45 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
     }, [initializeVisit]);
 
     const putMyVisit = async (v: Visit) => {
-        console.log(v)
-        const myDepliants = depliants.map(item => {return({product_id: parseInt(item), product_info_type: OutcomeInfoType.DEPLIANT })})
-        const mySamples = samples.map(item => {return({product_id: parseInt(item), product_info_type: OutcomeInfoType.CAMPIONE })})
-        console.log();
+        const myDepliants = depliants.map(item => { return ({ product_id: parseInt(item), product_info_type: OutcomeInfoType.DEPLIANT }) })
+        const mySamples = samples.map(item => { return ({ product_id: parseInt(item), product_info_type: OutcomeInfoType.CAMPIONE }) })
         const db = await createDb();
         const visitId = await putVisit(db, v);
         await putOutcomesByVisitId(db, myDepliants.concat(mySamples) as Outcome[], visitId);
         navigation.goBack();
     }
 
-    return (
-        <View style={{ margin: 10 }}>
+    const askOutcome = () => {
+        return (
+            <View>
+                <OutcomeSelect updVisit={updVisit} visit={visit} />
+                <View>
+                    <Text style={styles.textInputLabel}>CAMPIONI</Text>
+                    <DrugsSelect updOutcomes={updSamples} />
+                </View>
+                <View>
+                    <Text style={styles.textInputLabel}>DEPLIANT</Text>
+                    <DrugsSelect updOutcomes={updDepliants} />
+                </View>
+            </View>
+        )
+    }
 
-            <VisitDatePicker updDate={updVisitDate}/>
-            <OutcomeSelect updVisit={updVisit} visit={visit}/>
+    return (
+        <View style={{ margin: 10, justifyContent: 'space-between', flex: 1 }}>
             <View>
-                <Text style={styles.textInputLabel}>CAMPIONI</Text>
-                <DrugsSelect updOutcomes={updSamples} />
+                <VisitDatePicker updDate={updVisitDate} />
+                <View>
+                    <Text style={styles.textInputLabel}>NOTE</Text>
+                    <TextInput style={{ ...styles.textInput, height: 100 }} multiline={true} onChangeText={(myNote) => updVisit({ ...visit, note: myNote })} placeholder="Lasciato campione Aspirina1000" value={visit.note} />
+                </View>
+                {
+                    visit.date < new Date()
+                        ? askOutcome()
+                        : undefined
+                }
             </View>
-            <View>
-                <Text style={styles.textInputLabel}>DEPLIANT</Text>
-                <DrugsSelect updOutcomes={updDepliants} />
-            </View>
-            <View>
-                <Text style={styles.textInputLabel}>NOTE</Text>
-                <TextInput style={{ ...styles.textInput, height: 100 }} multiline={true} onChangeText={(myNote) => updVisit({ ...visit, note: myNote })} placeholder="Lasciato campione Aspirina1000" value={visit.note} />
-            </View>
+
             <TouchableOpacity onPress={() => putMyVisit(visit)} style={styles.formButton}>
                 <Text style={styles.formButtonLabel}>AGGIUNGI</Text>
             </TouchableOpacity>
