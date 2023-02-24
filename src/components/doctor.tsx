@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 import { Doctor } from "../models/doctor";
 import { styles } from '../styles/styles';
 import { DoctorPropsNavigation } from '../routes/types';
-import { Colors } from '../styles/colors';
 
 export const DoctorItem = (props: { doctor: Doctor }) => {
 

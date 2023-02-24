@@ -11,7 +11,6 @@ export const AddDrugModal = ({ route, navigation }: AddDrugProps) => {
 
     const [drug, updDrug] = useState<Drug>({} as Drug);
     const putMyDrug = async (d: Drug) => {
-        console.log(d)
         const db = await createDb();
         await putDrug(db, d);
         navigation.goBack();

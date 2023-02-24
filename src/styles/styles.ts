@@ -140,7 +140,7 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 5,
         backgroundColor: Colors.green,
-        width: '25%',
+        width: '33%',
         alignItems: 'center'
     },
 
@@ -149,7 +149,7 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 5,
         backgroundColor: Colors.red,
-        width: '25%',
+        width: '33%',
         alignItems: 'center'
     },
 
@@ -158,7 +158,7 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 5,
         backgroundColor: Colors.brown,
-        width: '25%',
+        width: '33%',
         alignItems: 'center'
     },
 

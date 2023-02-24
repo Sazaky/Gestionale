@@ -7,7 +7,7 @@ import { getDoctorById } from "../services/doctor";
 import { DoctorProps } from "../routes/types";
 import { Visit } from "../models/visit";
 import { getVisitsByDoctorId } from "../services/visit";
-import { VisitItem } from "../components/visit";
+import { VisitItem } from "../components/VisitItem";
 import { VisitsHeader } from "../components/visitsHeader";
 import { styles } from "../styles/styles";
 import { Colors } from "../styles/colors";

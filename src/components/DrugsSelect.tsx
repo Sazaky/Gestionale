@@ -15,7 +15,6 @@ const DrugsSelect = (props: {updOutcomes: React.Dispatch<React.SetStateAction<st
   const loadDataCallback = useCallback(async () => {
     const db = await createDb();
     const myDrugs = await getDrugsLight(db);
-    console.log(myDrugs);
     setDrugs(myDrugs);
   }, []);
 
