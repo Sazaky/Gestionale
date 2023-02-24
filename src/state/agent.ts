@@ -10,7 +10,7 @@ const agent = atom({
     }
   });
 
-const agentWithId = selector({
+export const agentWithId = selector({
     key: 'agentWithId',
     get: async ({get}) => {
       const db = await createDb();

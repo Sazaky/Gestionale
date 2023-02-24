@@ -13,11 +13,14 @@ import { styles } from "../styles/styles";
 import { Colors } from "../styles/colors";
 import { useIsFocused } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useRecoilState } from "recoil";
+import { agentWithId } from "../state/agent";
 
 export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
 
     const [doctor, setDoctor] = useState({} as Doctor);
     const [visits, setVisits] = useState([] as Visit[]);
+    const [agent, setAgent] = useRecoilState(agentWithId);
     const isVisible = useIsFocused();
 
 
@@ -52,7 +55,7 @@ export const DoctorScreen = ({ route, navigation }: DoctorProps) => {
 
             </View>
             <SafeAreaView style={{flex: 1}}>
-                <FlatList data={visits} renderItem={({ item }) => <VisitItem visit={item} />} ListHeaderComponent={() => <VisitsHeader doctor={doctor.id} agent={visits[0] && visits[0].agent_id} />} />
+                <FlatList data={visits} renderItem={({ item }) => <VisitItem visit={item} />} ListHeaderComponent={() => <VisitsHeader doctor={doctor.id} agent={agent.id} />} />
             </SafeAreaView>
         </View>
     );
