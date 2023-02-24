@@ -35,6 +35,5 @@ export const putOutcomesByVisitId = async (db: SQLiteDatabase, outcomes: Outcome
     }).join("\n").slice(0, -1)}
             ;`;
 
-    console.log(putQuery);
     return db.executeSql(putQuery);
 }
