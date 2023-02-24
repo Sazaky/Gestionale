@@ -6,12 +6,13 @@ import { createDb } from "../models/db";
 import { Status, Visit } from "../models/visit";
 import { AddVisitProps } from "../routes/types";
 import { styles } from "../styles/styles";
-import { Outcome, OutcomeInfoType, StatusArray } from "../models/outcome";
+import { Outcome, OutcomeInfoType } from "../models/outcome";
 import { putVisit } from "../services/visit";
 import OutcomeSelect from "../components/OutcomeSelect";
 import DrugsSelect from "../components/DrugsSelect";
 import { putOutcomesByVisitId } from "../services/outcome";
 import { VisitDatePicker } from "../components/VisitDatePicker";
+import { updLastVisit } from "../services/doctor";
 
 export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
 
@@ -35,7 +36,6 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
 
     }
 
-
     useEffect(() => {
         initializeVisit();
     }, [initializeVisit]);
@@ -47,6 +47,8 @@ export const AddVisitModal = ({ route, navigation }: AddVisitProps) => {
             const myDepliants = depliants.map(item => { return ({ product_id: parseInt(item), product_info_type: OutcomeInfoType.DEPLIANT }) })
             const mySamples = samples.map(item => { return ({ product_id: parseInt(item), product_info_type: OutcomeInfoType.CAMPIONE }) })
             await putOutcomesByVisitId(db, myDepliants.concat(mySamples) as Outcome[], visitId);
+            await updLastVisit(db, v);
+
         }
         navigation.goBack();
     }

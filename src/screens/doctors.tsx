@@ -2,7 +2,7 @@ import React from "react";
 import { useIsFocused } from "@react-navigation/native";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, SafeAreaView } from "react-native";
-import { DoctorItem } from "../components/doctor";
+import { DoctorItem } from "../components/DoctorItem";
 import { DoctorsHeader } from "../components/doctorsHeader";
 import { createDb } from "../models/db";
 import { Doctor } from "../models/doctor";

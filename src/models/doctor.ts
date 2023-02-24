@@ -3,7 +3,7 @@ export interface Doctor {
   name: string,
   last_name: string,
   specialization: string,
-  last_visit_delay: number,
+  last_visit : Date,
   address: string,
   postal_code: string,
   email: string,
