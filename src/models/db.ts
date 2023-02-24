@@ -35,7 +35,7 @@ let createAgentTable = `CREATE TABLE IF NOT EXISTS agent (
 
 let seedAgentTable = `INSERT INTO agent (name, last_name)
 VALUES
-( "Dario", "Serio")
+( "Tizio", "Caio")
 ;`;
 
 let dropVisitTable = 'DROP TABLE IF EXISTS visit;';
