@@ -1,3 +1,5 @@
+import { Status } from "./visit"
+
 export interface Outcome {
     id : number,
     visit_id : number,
@@ -15,15 +17,9 @@ export interface Outcome {
     note: string
   }
 
-export enum OutcomeType {
-  MATERIALE = 1,
-  RITORNARE = 0,
-  NEGATIVO = -1
-}
-
 export enum OutcomeInfoType {
   CAMPIONE = 0,
   DEPLIANT = 1
 }
 
-export const OutcomeTypeArray = Object.keys(OutcomeType).filter(key => !isNaN(Number(key))).map(key => ({label:  OutcomeType[Number(key)], value: Number(key)}))
+export const StatusArray = Object.keys(Status).filter(key => !isNaN(Number(key))).map(key => ({label:  Status[Number(key)], value: Number(key)}))

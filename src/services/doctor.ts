@@ -1,14 +1,17 @@
 import { enablePromise, SQLiteDatabase } from 'react-native-sqlite-storage';
 import { Doctor } from '../models/doctor';
+import { Visit } from '../models/visit';
 enablePromise(true);
 
 export const getDoctors = async (db: SQLiteDatabase): Promise<Doctor[]> => {
     try {
         const resultArray: Doctor[] = []
-        const results = await db.executeSql("SELECT * FROM doctor;");
+        const results = await db.executeSql("SELECT * FROM doctor ORDER BY last_visit;");
 
         results.forEach(result => {
             for (let index = 0; index < result.rows.length; index++) {
+                const myItem = result.rows.item(index);
+                myItem.last_visit = new Date(Date.parse(myItem.last_visit));
                 resultArray.push(result.rows.item(index));
             }
         });
@@ -39,3 +42,13 @@ export const putDoctor = async (db: SQLiteDatabase, d: Doctor) => {
 
     return db.executeSql(putQuery);
   };
+
+  export const updLastVisit = async (db: SQLiteDatabase, v: Visit) => {
+    const updQuery = `UPDATE doctor
+    SET last_visit = '${v.date.toISOString()}'
+    WHERE id = '${v.doctor_id}'
+    ;`;
+
+    return db.executeSql(updQuery);
+    
+  }

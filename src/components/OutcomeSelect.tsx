@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import { OutcomeTypeArray } from '../models/outcome';
+import { StatusArray } from '../models/outcome';
 import { Visit } from '../models/visit';
 import { Colors } from '../styles/colors';
 
@@ -19,18 +19,18 @@ const OutcomeSelect = (props : {updVisit: React.Dispatch<React.SetStateAction<Vi
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
-        data={OutcomeTypeArray}
+        data={StatusArray}
         search
         maxHeight={300}
         labelField="label"
         valueField="value"
         placeholder={!isFocus ? 'Esito' : '...'}
         searchPlaceholder="Cerca..."
-        value={OutcomeTypeArray[props.visit.outcome]}
+        value={StatusArray[props.visit.status]}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={(item) => {
-          props.updVisit({ ...props.visit, outcome: item.value });
+          props.updVisit({ ...props.visit, status: item.value });
           setIsFocus(false);
         }}
       />

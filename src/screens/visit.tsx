@@ -1,7 +1,7 @@
 import React from "react";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, SafeAreaView } from "react-native";
-import { DoctorItem } from "../components/doctor";
+import { DoctorItem } from "../components/DoctorItem";
 import { DoctorsHeader } from "../components/doctorsHeader";
 import { OutcomeItem } from "../components/outcome";
 import { OutcomeHeader } from "../components/outcomeHeader";

@@ -10,6 +10,7 @@ let createDoctorTable = `CREATE TABLE IF NOT EXISTS doctor (
     specialization varchar(50) NOT NULL,
     address varchar(256) NOT NULL,
     postal_code char(5) NOT NULL,
+    last_visit datetime,
     email varchar(256),
     phone varchar(14),
     mobile varchar(14),
@@ -17,11 +18,11 @@ let createDoctorTable = `CREATE TABLE IF NOT EXISTS doctor (
     longitude integer
 );`;
 
-let seedDoctorTable = `INSERT INTO doctor (name, last_name, specialization, address, postal_code, email, phone, mobile)
+let seedDoctorTable = `INSERT INTO doctor (name, last_name, specialization, address, postal_code, last_visit, email, phone, mobile)
 VALUES
-( "Mario", "Verdi", "Neuropsichiatra", "Via Mirafiori n. 1, 00123 Torino", "00123", "mario.verdi@host.it", "066668987", "3396667123"),
-( "Bruno", "Rossi", "Chirurgo", "Via Giulio Cesare n. 2, 00456, Roma", "00456", "bruno.rossi@host.it", "0816668987", "3386667123"),
-( "Luca", "Bianchi", "Naturopata", "Via Palermo n. 3, 00666, Firenze", "00666", "luca.bianchi@host.it", "0865668987", "3346667123")
+( "Mario", "Verdi", "Neuropsichiatra", "Via Mirafiori n. 1, 00123 Torino", "00123", "2023-01-01 12:00:00", "mario.verdi@host.it", "066668987", "3396667123"),
+( "Bruno", "Rossi", "Chirurgo", "Via Giulio Cesare n. 2, 00456, Roma", "00456", "2023-02-01 12:00:00", "bruno.rossi@host.it", "0816668987", "3386667123"),
+( "Luca", "Bianchi", "Naturopata", "Via Palermo n. 3, 00666, Firenze", "00666", "2023-02-12 12:00:00", "luca.bianchi@host.it", "0865668987", "3346667123")
 ;`;
 
 let dropAgentTable = 'DROP TABLE IF EXISTS agent;';
@@ -44,16 +45,17 @@ let createVisitTable = `CREATE TABLE IF NOT EXISTS visit (
     doctor_id integer NOT NULL,
     agent_id integer NOT NULL,
     date datetime NOT NULL,
-    outcome integer NOT NULL,
+    status integer NOT NULL,
     note text
 );`;
 
-let seedVisitTable = `INSERT INTO visit (doctor_id, agent_id, date, outcome, note)
+let seedVisitTable = `INSERT INTO visit (doctor_id, agent_id, date, status, note)
 VALUES
 ( 1, 0, '2023-01-01 12:00:00', -1, 'Non mi ha voluto ricevere'),
 ( 1, 0, '2023-01-02 12:00:00', 1, 'Depliant Aspirina 100, Campione Brufen' ),
 ( 1, 0, '2023-01-03 12:00:00', 0, 'Era fuori studio' ),
-( 1, 0, '2023-01-04 12:00:00', 1, 'Depliant Aspirina e Tachipirina')
+( 1, 0, '2023-01-04 12:00:00', 1, 'Depliant Aspirina e Tachipirina'),
+( 1, 0, '2023-12-31 12:00:00', 2, 'Interessato a Polase per corsa')
 ;`;
 
 let dropProductTable = 'DROP TABLE IF EXISTS product;';
