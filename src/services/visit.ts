@@ -22,7 +22,7 @@ export const getVisitsByDoctorId = async (db: SQLiteDatabase, id: number): Promi
 };
 
 export const putVisit = async (db: SQLiteDatabase, v: Visit) => {
-    const putQuery = `INSERT OR REPLACE INTO visit (doctor_id, agent_id, date, outcome, note)
+    const putQuery = `INSERT OR REPLACE INTO visit (doctor_id, agent_id, date, status, note)
         VALUES
         ( ${v.doctor_id}, ${v.agent_id}, '${v.date.toISOString()}', ${v.status}, '${v.note}')
         ;`;
@@ -33,7 +33,7 @@ export const putVisit = async (db: SQLiteDatabase, v: Visit) => {
         doctor_id = ${v.doctor_id} AND 
         agent_id = ${v.agent_id} AND 
         date = '${v.date.toISOString()}' AND 
-        outcome = ${v.status};`;
+        status = ${v.status};`;
 
     const results = await db.executeSql(getQuery);
 
