@@ -18,15 +18,15 @@ export const Home = () => {
             <View style={{ flexDirection: 'row' }}>
                 <TouchableOpacity style={{ width: '33.33%', alignItems: 'center' }} onPress={() => navDoctor.navigate('Medici')}>
                     <SvgUri width="50%" height="50%" uri='https://www.svgrepo.com/download/325813/doctor-female.svg' />
-                    <Text>MEDICI</Text>
+                    <Text style={{color: Colors.black}}>MEDICI</Text>
                 </TouchableOpacity>
                 <View style={{ width: '33.33%', alignItems: 'center' }}>
                     <SvgUri width="50%" height="50%" uri='https://www.svgrepo.com/download/325869/city-worker.svg' />
-                    <Text>PROFILO</Text>
+                    <Text style={{color: Colors.black}}>PROFILO</Text>
                 </View>
                 <TouchableOpacity style={{ width: '33.33%', alignItems: 'center' }} onPress={() => navDrugs.navigate('Farmaci')}>
                     <SvgUri width="50%" height="50%" uri='https://www.svgrepo.com/download/325975/medicines.svg' />
-                    <Text>FARMACI</Text>
+                    <Text style={{color: Colors.black}}>FARMACI</Text>
                 </TouchableOpacity>
             </View>
         </View>
