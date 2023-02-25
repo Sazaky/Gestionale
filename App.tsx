@@ -13,7 +13,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { createDb, createTables } from './src/models/db';
-import { Doctors } from './src/screens/Doctors';
+import { Doctors } from './src/screens/doctors';
 import { DoctorScreen } from './src/screens/doctor';
 import { StackParamList } from './src/routes/types';
 import { Home } from './src/screens/home';
@@ -21,6 +21,7 @@ import { AddDoctorModal } from './src/screens/AddDoctorModal';
 import { Drugs } from './src/screens/Drugs';
 import { AddDrugModal } from './src/screens/AddDrugModal';
 import { AddVisitModal } from './src/screens/AddVisitModal';
+import { RecoilRoot } from 'recoil';
 
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -39,21 +40,23 @@ const App = () => {
 
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Group>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Medici" component={Doctors} />
-        <Stack.Screen name="Farmaci" component={Drugs} />
-        <Stack.Screen name="Medico" component={DoctorScreen} initialParams={{ doctorId: undefined }} />
-        </Stack.Group>
-        <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="AggiungiMedico" component={AddDoctorModal} />
-        <Stack.Screen name="AggiungiFarmaco" component={AddDrugModal} />
-        <Stack.Screen name="AggiungiVisita" component={AddVisitModal} />
-        </Stack.Group>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <RecoilRoot>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Group>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Medici" component={Doctors} />
+            <Stack.Screen name="Farmaci" component={Drugs} />
+            <Stack.Screen name="Medico" component={DoctorScreen} initialParams={{ doctorId: undefined }} />
+          </Stack.Group>
+          <Stack.Group screenOptions={{ presentation: 'modal' }}>
+            <Stack.Screen name="AggiungiMedico" component={AddDoctorModal} />
+            <Stack.Screen name="AggiungiFarmaco" component={AddDrugModal} />
+            <Stack.Screen name="AggiungiVisita" component={AddVisitModal} />
+          </Stack.Group>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RecoilRoot>
   );
 };
 
